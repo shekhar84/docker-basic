@@ -1,0 +1,10 @@
+FROM alpine:3.11
+
+RUN apk add --no-cache bash && \
+    mkdir -p /hello/
+
+WORKDIR /hello/
+
+COPY hello.sh /hello/
+
+CMD  [ "sh", "hello.sh" ] 
