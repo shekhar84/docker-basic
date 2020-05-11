@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+  phpenv:
+    container_name: php-env
+    image: php-env:1
+    ports:
+      - "8080:80"
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    volumes: 
+      - "./:/var/www/html"
+
+  db_test:
+    image: mysql:5.7
+    container_name: php-db
+    restart: always
+    environment: 
+      MYSQL_ROOT_PASSWORD: root!pwd   

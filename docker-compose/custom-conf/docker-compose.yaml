@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  confphp3:
+    container_name: confphp3
+    image: confphp3:latest
+    ports:
+      - "8080:80"
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    volumes: 
+      - "./:/var/www/html"

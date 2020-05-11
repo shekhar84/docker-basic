@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+  hellophp2:
+    #image: php:7.4-apache
+    ports:
+      - "8080:80"
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    volumes: 
+      - "./:/var/www/html"
