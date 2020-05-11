@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  dbtest:
+    image: mysql:5.7
+    container_name: php-db
+    restart: always
+    environment: 
+      MYSQL_ROOT_PASSWORD: test
+      MYSQL_DATABASE: testdatabase
+    volumes:
+      - ./data:/var/lib/mysql
+  dbclient:
+    image: mysql:5.7
+    container_name: dbclient
+    depends_on:
+      - dbtest
+    command: mysql -uroot -ptest -hdbtest
