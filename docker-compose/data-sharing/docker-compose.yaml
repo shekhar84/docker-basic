@@ -1,0 +1,15 @@
+version: '3.7'
+
+services:
+  dbtest:
+    image: mysql:5.7
+    container_name: php-db
+    restart: always
+    environment: 
+      MYSQL_ROOT_PASSWORD: test
+      MYSQL_DATABASE: testdatabase
+    volumes:
+      - test-vol:/var/lib/mysql
+volumes: 
+  test-vol:
+    name: test-vol

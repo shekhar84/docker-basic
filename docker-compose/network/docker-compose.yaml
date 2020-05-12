@@ -1,0 +1,31 @@
+version: "3.7"
+
+services: 
+  # create nginx as reverse proxy 
+  web:
+    image: nginx:alpine
+    container_name: web
+    volumes: 
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    ports:
+      - 8080:80
+    networks: 
+      - app1_net
+      - app2_net
+  # first application as app1
+  app1:
+    image: httpd:latest
+    container_name: app1
+    networks: 
+      - app1_net
+  # second application as app2
+  app2:
+    image: httpd:latest
+    container_name: app2
+    networks: 
+      - app2_net
+
+# create two networks
+networks: 
+  app1_net:
+  app2_net:             
